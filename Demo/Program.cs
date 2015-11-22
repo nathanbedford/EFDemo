@@ -16,6 +16,7 @@ namespace Demo
         {
 
             var db = new DemoDbContext();
+            //db.Configuration.AutoDetectChangesEnabled = false;
 
             var user = db.Users.SingleOrDefault(x => x.UserName == USERNAME);
             if(user == null)
@@ -26,6 +27,7 @@ namespace Demo
                 };
                                 
                 db.Users.Add(user);
+                db.SaveChanges();
             }
 
             if(user.Roles.Count() == 0)
